@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMÜ Etkinlik Başvuru Formu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004c99;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e0eaff 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 50px 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 { font-size: 2.4rem; margin-bottom: 12px; }
+        .header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+
+        .form-content { padding: 40px; }
+
+        fieldset { border: none; margin-bottom: 40px; }
+
+        legend {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .form-group { margin-bottom: 32px; }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        input, select, textarea {
+            padding: 14px 16px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0,102,204,0.15);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="date"],
+        input[type="time"],
+        input[type="color"],
+        input[type="file"],
+        select,
+        textarea { width: 100%; }
+
+        .help-text {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 6px;
+        }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;     /* ← Değişiklik burada: alt alta */
+            gap: 0.9rem;                /* seçenekler arası dikey boşluk */
+            margin-top: 12px;
+            align-items: flex-start;    /* sola yasla */
+        }
+
+        .checkbox-group label, .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin: 0;
+            flex-shrink: 0;
+            position: relative;
+            top: 0.08em;
+            width: 1.1em;
+            height: 1.1em;
+        }
+
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        input[type="range"] { flex: 1; }
+
+        output {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .kvkk {
+            margin: 32px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 32px auto 0;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .footer-note {
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+            padding: 0 40px 40px;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 600px) {
+            .form-content { padding: 30px 20px; }
+            .header { padding: 40px 25px 25px; }
+            .checkbox-group, .radio-group { gap: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>OMÜ Etkinlik Başvuru Formu</h1>
+            <p>OMÜ öğrencilerini teknoloji ve kariyer dünyasıyla buluşturuyoruz! Katılmak istediğiniz oturumları seçin, kendinizi tanıtın ve yerinizi ayırtın.</p>
+        </div>
+
+        <div class="form-content">
+            <form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data">
+
+                <fieldset>
+                    <legend>Kişisel Bilgiler</legend>
+
+                    <div class="form-group">
+                        <label for="adsoyad">Ad Soyad *</label>
+                        <input type="text" id="adsoyad" name="adsoyad" required minlength="3" placeholder="Adınız Soyadınız">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ogrencino">Öğrenci Numarası *</label>
+                        <input type="text" id="ogrencino" name="ogrencino" required pattern="\d{9}" placeholder="Örn: 215043012">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eposta">E-posta Adresi *</label>
+                        <input type="email" id="eposta" name="eposta" required placeholder="ornek@omu.edu.tr">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Telefon Numarası</label>
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <select id="ulkeKodu" style="width: 160px; padding: 14px 12px; border: 1px solid #ddd; border-radius: 10px; font-size: 1rem; background: white;">
+                                <option value="+90" selected>Türkiye (+90)</option>
+                                <option value="+1">ABD / Kanada (+1)</option>
+                                <option value="+44">Birleşik Krallık (+44)</option>
+                                <option value="+49">Almanya (+49)</option>
+                                <option value="+33">Fransa (+33)</option>
+                                <option value="+994">Azerbaycan (+994)</option>
+                                <option value="+7">Rusya (+7)</option>
+                            </select>
+                            <input type="tel" id="telefon" pattern="[0-9]{10}" placeholder="5551234567" maxlength="10" style="flex: 1; min-width: 200px;">
+                        </div>
+                        <div class="help-text">Ülke kodunu seçin, ardından 10 haneli numarayı boşluksuz girin (örn: 5551234567)</div>
+                        <input type="hidden" id="tamTelefon" name="telefon">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dogumtarihi">Doğum Tarihi</label>
+                        <input type="date" id="dogumtarihi" name="dogumtarihi">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="website">LinkedIn / Kişisel Web Sitesi</label>
+                        <input type="url" id="website" name="website" placeholder="https://linkedin.com/in/adiniz">
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Tercihleriniz</legend>
+
+                    <div class="form-group">
+                        <label for="oturum">Katılmak İstediğiniz Oturum</label>
+                        <select id="oturum" name="oturum">
+                            <option value="">Seçiniz...</option>
+                            <optgroup label="Teknoloji Oturumları">
+                                <option value="yapayzeka">Yapay Zeka ve Makine Öğrenmesi</option>
+                                <option value="siberguvenlik">Siber Güvenlik & Etik Hacking</option>
+                                <option value="webgelistirme">Modern Web Geliştirme</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Katılım Şekli</label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" id="yuzyuze" name="katilimtipi" value="Yüz yüze" required>
+                                Yüz yüze
+                            </label>
+                            <label>
+                                <input type="radio" id="online" name="katilimtipi" value="Online">
+                                Online
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>İlgilendiğiniz Teknolojiler (birden fazla seçebilirsiniz)</label>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" id="html" name="teknolojiler" value="HTML/CSS">
+                                HTML & CSS
+                            </label>
+                            <label>
+                                <input type="checkbox" id="js" name="teknolojiler" value="JavaScript">
+                                JavaScript / React
+                            </label>
+                            <label>
+                                <input type="checkbox" id="python" name="teknolojiler" value="Python">
+                                Python
+                            </label>
+                            <label>
+                                <input type="checkbox" id="ai" name="teknolojiler" value="AI/ML">
+                                Yapay Zeka / ML
+                            </label>
+                            <label>
+                                <input type="checkbox" id="cyber" name="teknolojiler" value="Siber Güvenlik">
+                                Siber Güvenlik
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="motivasyon">Neden bu etkinliğe katılmak istiyorsunuz? *</label>
+                        <textarea id="motivasyon" name="motivasyon" rows="5" required maxlength="600" placeholder="Bizi heyecanlandırın! 😊"></textarea>
+                        <div class="help-text">Maksimum 600 karakter</div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Ek Belgeler & Tercihler</legend>
+
+                    <div class="form-group">
+                        <label for="cv">Özgeçmiş / CV</label>
+                        <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx">
+                        <div class="help-text">PDF, Word (.doc/.docx) — maks. 5 MB önerilir</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gano">Not Ortalaması (GANO)</label>
+                        <div class="range-container">
+                            <input type="range" id="gano" name="gano" min="0" max="4" step="0.01" value="2.5" oninput="ganoValue.textContent = this.value">
+                            <output id="ganoValue">2.50</output>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="renk">Favori Tema Rengi (isteğe bağlı)</label>
+                        <input type="color" id="renk" name="renk" value="#0066cc">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uygunluk">Görüşme için uygun olduğunuz saat aralığı</label>
+                        <input type="time" id="uygunluk" name="uygunluk">
+                    </div>
+
+                    <div class="kvkk">
+                        <input type="checkbox" id="kvkk" name="kvkk" required>
+                        <label for="kvkk">Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında kişisel verilerimin işlenmesine <strong>onay</strong> veriyorum. *</label>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="submit-btn">Başvurumu Gönder</button>
+            </form>
+        </div>
+
+        <div class="footer-note">
+            <strong>Gizlilik Bildirimi (KVKK):</strong> Paylaştığınız tüm bilgiler yalnızca etkinlik organizasyonu amacıyla kullanılacak ve 6698 sayılı Kişisel Verilerin Korunması Kanunu’na uygun olarak işlenecektir. Başvurunuzla ilgili sorularınız için etkinlik@omu.edu.tr adresine yazabilirsiniz.
+        </div>
+    </div>
+
+    <script>
+        // GANO gösterimi
+        const gano = document.getElementById('gano');
+        const ganoValue = document.getElementById('ganoValue');
+        if (gano && ganoValue) {
+            gano.oninput = () => { ganoValue.textContent = gano.value; };
+        }
+
+        // Telefon birleştirme
+        const ulkeKodu = document.getElementById('ulkeKodu');
+        const telefon = document.getElementById('telefon');
+        const tamTelefon = document.getElementById('tamTelefon');
+
+        function guncelleTamTelefon() {
+            let numara = telefon.value.trim().replace(/\D/g, '');
+            telefon.value = numara;
+            tamTelefon.value = numara ? ulkeKodu.value + numara : '';
+        }
+
+        ulkeKodu.addEventListener('change', guncelleTamTelefon);
+        telefon.addEventListener('input', guncelleTamTelefon);
+        guncelleTamTelefon();
+    </script>
+
+</body>
+</html>
